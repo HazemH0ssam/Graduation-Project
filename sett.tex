@@ -1,0 +1,189 @@
+%=========== PACKAGES ============================
+\usepackage{amsmath,amsthm,amssymb,physics,amsfonts}          %math packages
+\usepackage[a4paper, total={6in, 8in}, margin=2cm]{geometry}     %margine
+\usepackage{xcolor}         % Extended colors
+\usepackage{color}         % Color extended names
+\usepackage[many]{tcolorbox}
+\usepackage{mwe}         % titlepage
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}  %hyperlinking def,thm,..
+\usepackage[frak=esstix]{mathalpha}
+\usepackage[style=authoryear]{biblatex}
+\usepackage{mathtools,leftindex,tensor,mhchem}
+\usepackage{enumitem}
+\usepackage{bbding}
+\usepackage{tikz}
+\usepackage{mathrsfs,relsize,array}
+\newcommand\Laplace{\mathlarger{\mathlarger{\mathscr{L}}}}
+\usepackage{setspace}
+\spacing{1.2}
+\usepackage{subfig}
+\usepackage{emptypage}
+
+%============Define colors ===========================
+\definecolor{problemblue}{RGB}{100,134,158}    % for Exercise
+\definecolor{idiomsgreen}{RGB}{0,162,0}         % for Exercise
+\definecolor{exercisebgblue}{RGB}{192,232,252}      % for Exercise
+\definecolor{myblue}{RGB}{0,163,243}  % for theorem
+%\definecolor{myblue}{RGB}{242,1,11}  % for theorem
+%\definecolor{myblue}{RGB}{241,199,16}  % for theorem
+\definecolor{myOrange}{RGB}{255,178,102}  % for proposition
+
+%============Laplace ==================================
+\usepackage{mathrsfs}
+\newsavebox\foobox
+\newlength{\foodim}
+\newcommand{\slantbox}[2][0]{\mbox{%
+        \sbox{\foobox}{#2}%
+        \foodim=#1\wd\foobox
+        \hskip \wd\foobox
+        \hskip -0.5\foodim
+        \pdfsave
+        \pdfsetmatrix{1 0 #1 1}%
+        \llap{\usebox{\foobox}}%
+        \pdfrestore
+        \hskip 0.5\foodim
+    }}
+\def\Laplace{\slantbox[-.45]{$\mathscr{L}$}}
+%================ derivatives ============================
+\usepackage[mathscr]{euscript}
+
+% Copied from mathrsfs.sty
+\DeclareSymbolFont{rsfs}{U}{rsfs}{m}{n}
+\DeclareSymbolFontAlphabet{\mathscrsfs}{rsfs}
+
+%================= definition ==================
+\tcbuselibrary{skins}
+
+\NewTotalTColorBox[auto counter]{\Definition}{ +m }{
+    notitle,
+    colback=green!5!white,
+    frame hidden,
+    boxrule=0pt,
+    enhanced,
+    sharp corners,
+    borderline west={4pt}{0pt}{green!50!black},
+}{
+    \textcolor{green!50!black}{
+        \sffamily
+        \textbf{Definition~\thetcbcounter.}%
+    }%
+    #1
+}
+%=================== Theorem ======================
+\tcbuselibrary{theorems}
+\tcbuselibrary{skins}
+\newtcbtheorem[number within=chapter]{thm}{Theorem}{
+    theorem style=change apart,
+    enhanced jigsaw,% <--- jigsaw
+    sharp corners,
+    boxrule=0pt,
+    toprule=1pt,bottomrule=1pt,
+    left=0.2cm,right=0.2cm,top=0.2cm,
+    titlerule=0.5em,
+    toptitle=0.1cm,
+    bottomtitle=-0.1cm,
+    colframe=white!25!black,colback=white,coltitle=white,
+    %title style={white!25!black},   & <---- remove
+    fonttitle=\bfseries,fontupper=\normalsize}{thm}
+
+%================== itemizing =========================
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+        \node[shape=circle,draw,inner sep=0.3pt] (char) {#1};}}
+
+
+%=================== Theorems like definitions ==============
+\tcbuselibrary{skins}
+
+\NewTotalTColorBox[auto counter]{\Theorem}{ +m }{
+    notitle,
+    colback=blue!5!white,
+    frame hidden,
+    boxrule=0pt,
+    enhanced,
+    sharp corners,
+    borderline west={4pt}{0pt}{blue!50!black},
+}{
+    \textcolor{blue!50!black}{
+        \sffamily
+        \textbf{Theorems~\thetcbcounter.}%
+    }%
+    #1
+}
+%========================= Time line ===============================
+\newcommand{\foo}{\hspace{-2.3pt}$\bullet$ \hspace{5pt}}
+%=============================== Lemma =========================
+\tcbuselibrary{skins}
+
+\NewTotalTColorBox[auto counter]{\Lemma}{ +m }{
+    notitle,
+    colback=red!5!white,
+    frame hidden,
+    boxrule=0pt,
+    enhanced,
+    sharp corners,
+    borderline west={4pt}{0pt}{red!50!black},
+}{
+    \textcolor{red!50!black}{
+        \sffamily
+        \textbf{Lemma~\thetcbcounter.}%
+    }%
+    #1
+}
+
+%=========================== Remark =====================
+\tcbuselibrary{skins}
+
+\NewTotalTColorBox[auto counter]{\Remark}{ +m }{
+    notitle,
+    colback=cyan!5!white,
+    frame hidden,
+    boxrule=0pt,
+    enhanced,
+    sharp corners,
+    borderline west={4pt}{0pt}{cyan!50!black},
+}{
+    \textcolor{cyan!50!black}{
+        \sffamily
+        \textbf{Remark~\thetcbcounter.}%
+    }%
+    #1
+}
+%=============================== Proposition =========================
+\tcbuselibrary{skins}
+
+\NewTotalTColorBox[auto counter]{\Proposition}{ +m }{
+    notitle,
+    colback=red!5!white,
+    frame hidden,
+    boxrule=0pt,
+    enhanced,
+    sharp corners,
+    borderline west={4pt}{0pt}{red!50!black},
+}{
+    \textcolor{red!50!black}{
+        \sffamily
+        \textbf{Proposition~\thetcbcounter.}%
+    }%
+    #1
+}
+%=============================== Corollary =========================
+\tcbuselibrary{skins}
+
+\NewTotalTColorBox[auto counter]{\Corollary}{ +m }{
+    notitle,
+    colback=pink!5!white,
+    frame hidden,
+    boxrule=0pt,
+    enhanced,
+    sharp corners,
+    borderline west={4pt}{0pt}{pink!50!black},
+}{
+    \textcolor{pink!50!black}{
+        \sffamily
+        \textbf{Corollary~\thetcbcounter.}%
+    }%
+    #1
+}
+%=============== example ====================
+\newtheorem{example}{Example}[chapter]
